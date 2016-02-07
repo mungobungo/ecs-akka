@@ -1,5 +1,6 @@
 ﻿using Nancy.Hosting.Self;
 using System;
+using System.Threading;
 using Akka.Actor;
 using akkanansy.Actors;
 namespace akkanansy
@@ -17,7 +18,10 @@ namespace akkanansy
 
 			Console.WriteLine("Nancy now listening - navigating to http://localhost:8888/nancy/. Press enter to stop");
 			//Process.Start("http://localhost:8888/nancy/");
-			Console.ReadKey();
+			string a = "none";
+			while (a != "quit") {
+				a = Console.ReadLine ();
+		    }
 
 			nancyHost.Stop();
 
