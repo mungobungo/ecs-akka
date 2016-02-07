@@ -1,10 +1,7 @@
 FROM mono:3.10-onbuild
-ADD . /akka-app
 
-EXPOSE 8888
-EXPOSE 8889
-EXPOSE 8899
+EXPOSE 80
 
-CMD [ "mono",  "/akka-app/bin/Debug/akka-nancy.exe" ]
+CMD [ "mono",  "/usr/src/app/build/akka-nancy.exe" ]
 
 

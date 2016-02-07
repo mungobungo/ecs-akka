@@ -13,10 +13,10 @@ namespace akkanansy
 			system = ActorSystem.Create("MySystem");
 			system.ActorOf<DummyActor>("greeter");
 
-			var nancyHost = new NancyHost(new Uri("http://localhost:8888/nancy/"), new Uri("http://localhost:8889/nancy/"), new Uri("http://localhost:8899/nancytoo/"));
+			var nancyHost = new NancyHost(new Uri("http://localhost:80/nancy/"));
 			nancyHost.Start();
 
-			Console.WriteLine("Nancy now listening - navigating to http://localhost:8888/nancy/. Press enter to stop");
+			Console.WriteLine("Nancy now listening - navigating to http://localhost:80/nancy/. Press enter to stop");
 			//Process.Start("http://localhost:8888/nancy/");
 			string a = "none";
 			while (a != "quit") {
