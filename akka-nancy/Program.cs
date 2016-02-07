@@ -1,11 +1,17 @@
 ﻿using Nancy.Hosting.Self;
 using System;
+using Akka.Actor;
+using akkanansy.Actors;
 namespace akkanansy
 {
 	class Program
 	{
+		public static ActorSystem system;
 		static void Main (string[] args)
 		{
+			system = ActorSystem.Create("MySystem");
+			system.ActorOf<DummyActor>("greeter");
+
 			var nancyHost = new NancyHost(new Uri("http://localhost:8888/nancy/"), new Uri("http://localhost:8889/nancy/"), new Uri("http://localhost:8899/nancytoo/"));
 			nancyHost.Start();
 
