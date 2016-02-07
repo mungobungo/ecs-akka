@@ -6,7 +6,7 @@ namespace akkanansy
 	{
 		static void Main (string[] args)
 		{
-			var nancyHost = new NancyHost(new Uri("http://localhost:8888/nancy/"), new Uri("http://127.0.0.1:8889/nancy/"), new Uri("http://localhost:8899/nancytoo/"));
+			var nancyHost = new NancyHost(new Uri("http://localhost:8888/nancy/"), new Uri("http://localhost:8889/nancy/"), new Uri("http://localhost:8899/nancytoo/"));
 			nancyHost.Start();
 
 			Console.WriteLine("Nancy now listening - navigating to http://localhost:8888/nancy/. Press enter to stop");
