@@ -17,7 +17,7 @@ namespace akkanansy
 
             var hostconfig = new Nancy.Hosting.Self.HostConfiguration();
             hostconfig.UrlReservations.CreateAutomatically = true;
-            var nancyHost = new NancyHost(hostconfig, new Uri("http://localhost:8888/nancy/") );
+            var nancyHost = new NancyHost(hostconfig, new Uri("http://localhost:80/nancy/") );
 			nancyHost.Start();
 
 			Console.WriteLine("Nancy now listening - navigating to http://localhost:80/nancy/. Press enter to stop");
