@@ -11,19 +11,21 @@ namespace akkanansy.Actors
 		public SqsActor ()
 		{
 			Receive<string> (x => {
-				
-				var config = new AmazonSQSConfig();
-				config.ServiceURL = "https://sqs.us-west-2.amazonaws.com/";
-				//config.RegionEndpointServiceName = "https://us-west-2.amazonaws.com/";
-
-				var cred = new Amazon.Runtime.EnvironmentVariablesAWSCredentials();
-				var client = new AmazonSQSClient(cred, config);
-
-				var msg =  x + " and what " + Guid.NewGuid().ToString();
-				var request = new Amazon.SQS.Model.SendMessageRequest("https://sqs.us-west-2.amazonaws.com/759958467938/akka_q", msg);
-				client.SendMessage(request);
 
 
+                var sqs_url = Environment.GetEnvironmentVariable("sqs_url", EnvironmentVariableTarget.Process);
+                var config = new AmazonSQSConfig();
+                config.ServiceURL = sqs_url;
+
+                var creds = new StoredProfileAWSCredentials();
+                var client = new AmazonSQSClient(creds, config);
+
+                var msg =  x + " and what " + Guid.NewGuid().ToString();
+                var queue_url = Environment.GetEnvironmentVariable("queue_url", EnvironmentVariableTarget.Process);
+             
+                var request = new Amazon.SQS.Model.SendMessageRequest(queue_url, msg);
+             
+                client.SendMessage(request);
 
 				Sender.Tell(string.Format("done  : [{0}]", msg ));
 			});
